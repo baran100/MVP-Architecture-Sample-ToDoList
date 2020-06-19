@@ -16,7 +16,6 @@ import com.sevenlearn.todo.model.Task;
 
 public class TaskDetailActivity extends AppCompatActivity {
     private int selectedImportance = Task.IMPORTANCE_NORMAL;
-    private View deleteBtn;
     private ImageView lastSelectedImportanceIv;
 
     @Override
