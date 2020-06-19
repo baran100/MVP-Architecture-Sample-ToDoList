@@ -1,17 +1,24 @@
-package com.sevenlearn.todo;
+package com.sevenlearn.todo.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+@Entity(tableName = "tbl_tasks")
 public class Task implements Parcelable {
+    @PrimaryKey(autoGenerate = true)
     private long id;
     private String title;
+    @ColumnInfo(name = "is_completed")
     private boolean isCompleted;
     private int importance=IMPORTANCE_NORMAL;
 
-    private static final int IMPORTANCE_HIGH = 2;
-    private static final int IMPORTANCE_NORMAL = 1;
-    private static final int IMPORTANCE_LOW = 0;
+    public static final int IMPORTANCE_HIGH = 2;
+    public static final int IMPORTANCE_NORMAL = 1;
+    public static final int IMPORTANCE_LOW = 0;
 
     public long getId() {
         return id;

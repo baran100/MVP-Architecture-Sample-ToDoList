@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F6FAFC"
-    tools:context=".MainActivity">
+    tools:context=".main.MainActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -17,12 +17,12 @@
             android:layout_height="56dp">
 
             <TextView
+                style="@style/h1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginStart="12dp"
                 android:text="@string/app_name"
-                style="@style/h1"
                 android:textColor="@color/textColorOnSurface" />
 
             <ImageView
@@ -44,17 +44,17 @@
             <EditText
                 android:id="@+id/searchEt"
                 style="@style/p"
-                android:textColor="@color/defaultTextColor"
-                android:textColorHint="@color/secondaryTextColor"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/background_edit_text"
-                android:hint="Search tasks..."
-                android:paddingTop="6dp"
-                android:paddingStart="12dp"
-                android:drawablePadding="8dp"
                 android:drawableStart="@drawable/ic_search_gray_24dp"
-                android:paddingBottom="6dp">
+                android:drawablePadding="8dp"
+                android:hint="Search tasks..."
+                android:paddingStart="12dp"
+                android:paddingTop="6dp"
+                android:paddingBottom="6dp"
+                android:textColor="@color/defaultTextColor"
+                android:textColorHint="@color/secondaryTextColor">
 
             </EditText>
 
@@ -69,9 +69,11 @@
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
         <RelativeLayout
+            android:id="@+id/headerContainer"
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:paddingStart="12dp"
+            android:visibility="visible"
             android:paddingEnd="12dp">
 
             <com.google.android.material.button.MaterialButton
@@ -81,18 +83,18 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentBottom="true"
-                android:textSize="12sp"
                 android:text="Delete All"
-                app:iconSize="18dp"
-                app:icon="@drawable/ic_delete_24dp" />
+                android:textSize="12sp"
+                app:icon="@drawable/ic_delete_24dp"
+                app:iconSize="18dp" />
 
             <TextView
                 android:id="@+id/todayTv"
                 style="@style/h1"
-                android:layout_alignParentBottom="true"
-                android:layout_marginBottom="14dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="14dp"
 
                 android:paddingEnd="12dp"
                 android:text="Today">
@@ -102,10 +104,10 @@
             <View
                 android:layout_width="wrap_content"
                 android:layout_height="3.5dp"
-                android:layout_alignBottom="@id/deleteAllBtn"
                 android:layout_alignStart="@id/todayTv"
-                android:layout_marginBottom="8dp"
                 android:layout_alignEnd="@id/todayTv"
+                android:layout_alignBottom="@id/deleteAllBtn"
+                android:layout_marginBottom="8dp"
                 android:background="@drawable/shape_underline" />
 
 
@@ -115,12 +117,37 @@
             android:id="@+id/taskListRv"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:paddingStart="12dp"
-            android:paddingEnd="12dp"
             android:clipToPadding="false"
+            android:paddingStart="12dp"
             android:paddingTop="4dp"
+            android:paddingEnd="12dp"
             android:paddingBottom="4dp" />
 
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/emptyState"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="gone"
+        tools:visibility="visible"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            app:srcCompat="@drawable/empty_state" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            style="@style/p"
+            android:textSize="16sp"
+            android:text="Try adding some tasks to see them here" />
     </LinearLayout>
 
 
