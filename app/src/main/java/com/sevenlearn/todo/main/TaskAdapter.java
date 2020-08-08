@@ -27,8 +27,8 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
     private Drawable lowImportantDrawable;
 
     public TaskAdapter(Context context, TaskItemEventListener eventListener) {
-
         this.eventListener = eventListener;
+
         highImportantDrawable = ResourcesCompat.getDrawable(context.getResources(), R.drawable.shape_importance_high_rect, null);
         normalImportantDrawable = ResourcesCompat.getDrawable(context.getResources(), R.drawable.shape_importance_normal_rect, null);
         lowImportantDrawable = ResourcesCompat.getDrawable(context.getResources(), R.drawable.shape_importance_low_rect, null);

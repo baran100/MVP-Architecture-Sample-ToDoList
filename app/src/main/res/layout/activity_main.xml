@@ -49,8 +49,9 @@
                 android:background="@drawable/background_edit_text"
                 android:drawableStart="@drawable/ic_search_gray_24dp"
                 android:drawablePadding="8dp"
-                android:hint="Search tasks..."
+                android:hint="@string/search_tasks"
                 android:paddingStart="12dp"
+                android:paddingEnd="12dp"
                 android:paddingTop="6dp"
                 android:paddingBottom="6dp"
                 android:textColor="@color/defaultTextColor"
@@ -83,7 +84,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentBottom="true"
-                android:text="Delete All"
+                android:text="@string/delete_all"
                 android:textSize="12sp"
                 app:icon="@drawable/ic_delete_24dp"
                 app:iconSize="18dp" />
@@ -97,7 +98,8 @@
                 android:layout_marginBottom="14dp"
 
                 android:paddingEnd="12dp"
-                android:text="Today">
+                android:paddingStart="12dp"
+                android:text="@string/today">
 
             </TextView>
 
@@ -147,7 +149,7 @@
             android:layout_marginTop="12dp"
             style="@style/p"
             android:textSize="16sp"
-            android:text="Try adding some tasks to see them here" />
+            android:text="@string/try_adding_some_tasks_to_see_them_here" />
     </LinearLayout>
 
 
@@ -159,7 +161,7 @@
         android:layout_gravity="bottom|center_horizontal"
         android:layout_margin="12dp"
         android:minHeight="65dp"
-        android:text="Add New Task"
+        android:text="@string/add_new_task"
         android:textAllCaps="true"
         app:icon="@drawable/ic_add_24dp"
 

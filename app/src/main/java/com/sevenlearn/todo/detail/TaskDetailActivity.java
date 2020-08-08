@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 
@@ -14,9 +15,12 @@ import com.sevenlearn.todo.main.MainActivity;
 import com.sevenlearn.todo.model.AppDatabase;
 import com.sevenlearn.todo.model.Task;
 
-public class TaskDetailActivity extends AppCompatActivity {
+public class TaskDetailActivity extends AppCompatActivity implements TaskDetailContract.View{
     private int selectedImportance = Task.IMPORTANCE_NORMAL;
     private ImageView lastSelectedImportanceIv;
+    private TaskDetailContract.Presenter presenter;
+    private EditText etTaskTitle;
+    private View deleteButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +31,25 @@ public class TaskDetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 finish();
+            }
+        });
+
+        presenter = new TaskDetailPresenter(AppDatabase.getAppDatabase(this).getTaskDao(), (Task) getIntent().getParcelableExtra(MainActivity.EXTRA_KEY_TASK));
+        etTaskTitle = findViewById(R.id.taskEt);
+
+        Button saveChangeBtn = findViewById(R.id.saveChangesBtn);
+        saveChangeBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                presenter.saveChanges(selectedImportance, etTaskTitle.getText().toString());
+            }
+        });
+
+        deleteButton = findViewById(R.id.deleteTaskBtn);
+        deleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                presenter.deleteTask();
             }
         });
 
@@ -76,14 +99,49 @@ public class TaskDetailActivity extends AppCompatActivity {
             }
         });
 
-
+        presenter.onAttach(this);
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        presenter.onDetach();
     }
 
+
+    @Override
+    public void showTask(Task task) {
+        etTaskTitle.setText(task.getTitle());
+        switch (task.getImportance()){
+            case Task.IMPORTANCE_HIGH:
+                findViewById(R.id.highImportanceBtn).performClick();
+                break;
+            case Task.IMPORTANCE_NORMAL:
+                findViewById(R.id.normalImportanceBtn).performClick();
+                break;
+            case Task.IMPORTANCE_LOW:
+                findViewById(R.id.lowImportanceBtn).performClick();
+                break;
+        }
+    }
+
+    @Override
+    public void setDeleteBtnVisibility(boolean visibility) {
+        deleteButton.setVisibility(visibility ? View.VISIBLE : View.GONE);
+    }
+
+    @Override
+    public void showError(String error) {
+        Snackbar.make(findViewById(R.id.root_taskDetail), error, Snackbar.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void returnResult(int resultCoe, Task task) {
+        Intent intent = new Intent();
+        intent.putExtra(MainActivity.EXTRA_KEY_TASK,task);
+        setResult(resultCoe,intent);
+        finish();
+    }
 
 
 }

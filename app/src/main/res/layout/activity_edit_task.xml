@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".detail.TaskDetailActivity">
+    tools:context=".detail.TaskDetailActivity"
+    android:id="@+id/root_taskDetail">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -32,7 +33,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginStart="12dp"
                 android:layout_toEndOf="@id/backBtn"
-                android:text="Edit Task" />
+                android:text="@string/edit_task" />
 
             <ImageView
                 android:id="@+id/deleteTaskBtn"
@@ -81,7 +82,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginEnd="8dp"
-                    android:text="High" />
+                    android:text="@string/high" />
 
                 <ImageView
                     android:id="@+id/highImportanceCheckIv"
@@ -107,7 +108,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginEnd="8dp"
-                    android:text="Normal" />
+                    android:text="@string/normal" />
 
                 <ImageView
                     android:id="@+id/normalImportanceCheckIv"
@@ -133,7 +134,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginEnd="8dp"
-                    android:text="Low" />
+                    android:text="@string/low" />
 
                 <ImageView
                     android:id="@+id/lowImportanceCheckIv"
@@ -156,7 +157,7 @@
             android:layout_marginEnd="12dp"
             android:background="@null"
             android:gravity="top|start"
-            android:hint="Add a task for today..."
+            android:hint="@string/add_a_task_for_today"
             android:textColor="@color/defaultTextColor"
             android:textColorHint="@color/defaultTextColor"
             android:textSize="18sp" />
@@ -170,7 +171,7 @@
         android:layout_gravity="bottom|center_horizontal"
         android:layout_margin="12dp"
         android:minHeight="65dp"
-        android:text="Save Changes"
+        android:text="@string/save_changes"
         android:textAllCaps="true"
         app:icon="@drawable/ic_circle_done_white_24dp" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -12,5 +12,6 @@
     <color name="textColorOnSurface">#E6ffffff</color>
     <color name="secondaryButtonBackgroundTint">#EAEFF5</color>
     <color name="lightGray">#E3E8EE</color>
+    <color name="orange">#FF5722</color>
 
 </resources>
